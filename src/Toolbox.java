@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
@@ -70,7 +71,25 @@ public class Toolbox {
     if (head == null) {
       throw new IllegalArgumentException("Head cannot be null.");
     }
-    return null; 
+    Map<Integer,Integer> countMap = new HashMap<>();
+
+   
+    SingleNode current = head;
+
+    while(current != null){
+      int value =  current.data;
+      if(countMap.containsKey(value)){
+        countMap.put(value, countMap.get(value) + 1);
+      }else{
+
+        countMap.put(value, 1);
+      }
+
+      current=current.next;
+
+    }
+
+    return countMap; 
   }
 
   /**
